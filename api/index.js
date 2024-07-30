@@ -11,7 +11,7 @@ require('dotenv').config()
 main().then(() => console.log('Database Connected')).catch(err => console.log(err))
 
 async function main() {
-    await mongoose.connect(process.env.MONGO_URL)
+    await mongoose.connect(process.env.MONGODB_URI)
 }
 
 app.use(express.json())
