@@ -10,7 +10,7 @@ const Featured = ({ type,setGenre }) => {
   React.useEffect(() => {
     const getRandomContent = async () => {
       try {
-        const res = await axios.get(`http://localhost:8800/api/movies/random?type=${type}`,{
+        const res = await axios.get(`${import.meta.env.VITE_REACT_APP_BASE_URL}movies/random?type=${type}`,{
           headers: {
               token: `Bearer ${user.accessToken}`
           }

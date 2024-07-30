@@ -33,7 +33,6 @@ export default function NewList() {
     createList(list,dispatch)
     setSuccess(error)
   }
-  console.log(list)
   return (
     <div className="newList">
       <h1 className="addListTitle">New Movie</h1>

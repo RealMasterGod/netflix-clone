@@ -5,7 +5,7 @@ export const getMovies = async (dispatch) => {
     dispatch(getMoviesStart())
     // console.log("hello")
     try {
-        const res = await axios.get("http://localhost:8800/api/movies", {
+        const res = await axios.get(`${import.meta.env.VITE_REACT_APP_BASE_URL}movies`, {
             headers: {
                 token: "Bearer "+ JSON.parse(localStorage.getItem("user")).accessToken
             },
@@ -20,7 +20,7 @@ export const deleteMovie = async (id,dispatch) => {
     dispatch(deleteMovieStart())
     // console.log("hello")
     try {
-        await axios.delete("http://localhost:8800/api/movies/"+id, {
+        await axios.delete(`${import.meta.env.VITE_REACT_APP_BASE_URL}movies/`+id, {
             headers: {
                 token: "Bearer "+ JSON.parse(localStorage.getItem("user")).accessToken
             },
@@ -35,7 +35,7 @@ export const createMovie = async (movie,dispatch) => {
     dispatch(createMovieStart())
     // console.log("hello")
     try {
-        const res = await axios.post("http://localhost:8800/api/movies/", movie, {
+        const res = await axios.post(`${import.meta.env.VITE_REACT_APP_BASE_URL}movies/`, movie, {
             headers: {
                 token: "Bearer "+ JSON.parse(localStorage.getItem("user")).accessToken
             },
@@ -50,7 +50,7 @@ export const updateMovie = async (id,movie,dispatch) => {
     dispatch(updateMovieStart())
     // console.log("hello")
     try {
-        const res = await axios.put("http://localhost:8800/api/movies/"+id, movie, {
+        const res = await axios.put(`${import.meta.env.VITE_REACT_APP_BASE_URL}movies/`+id, movie, {
             headers: {
                 token: "Bearer "+ JSON.parse(localStorage.getItem("user")).accessToken
             },

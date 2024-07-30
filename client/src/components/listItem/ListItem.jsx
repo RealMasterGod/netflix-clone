@@ -18,7 +18,7 @@ const ListItem = ({ item }) => {
     const getMovie = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:8800/api/movies/find/" + item,
+          `${import.meta.env.VITE_REACT_APP_BASE_URL}movies/find/` + item,
           {
             headers: {
               token:

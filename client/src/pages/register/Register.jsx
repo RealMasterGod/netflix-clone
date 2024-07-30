@@ -16,7 +16,7 @@ const Register = () => {
   const handleFinish = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:8800/api/auth/register", {
+      await axios.post(`${import.meta.env.VITE_REACT_APP_BASE_URL}auth/register`, {
         username,
         email,
         password,

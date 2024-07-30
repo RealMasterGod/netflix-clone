@@ -6,8 +6,11 @@ import WidgetSm from "../../components/widgetSm/WidgetSm";
 import WidgetLg from "../../components/widgetLg/WidgetLg";
 import React from 'react'
 import axios from "axios";
+import { useContext } from "react";
+import { AuthContext } from "../../context/authContext/AuthContext";
 
 export default function Home() {
+  const {user} = useContext(AuthContext)
   const MONTHS = React.useMemo(() => [
     "Jan",
     "Feb",
@@ -27,10 +30,10 @@ export default function Home() {
   React.useEffect(() => {
     const getStats = async () => {
       try {
-        const res = await axios.get("http://localhost:8800/api/users/stats", {
+        const res = await axios.get(`${import.meta.env.VITE_REACT_APP_BASE_URL}users/stats`, {
           headers: {
             token:
-              `Bearer ${JSON.parse(localStorage.getItem("user")).accessToken}`,
+              `Bearer ${user.accessToken}`,
           },
         });
         const statsList = res?.data?.sort((a,b) => a._id - b._id)

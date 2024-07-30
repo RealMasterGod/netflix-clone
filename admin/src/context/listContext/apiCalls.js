@@ -6,7 +6,7 @@ export const getLists = async (dispatch) => {
     dispatch(getListsStart())
     // console.log("hello")
     try {
-        const res = await axios.get("http://localhost:8800/api/lists/all", {
+        const res = await axios.get(`${import.meta.env.VITE_REACT_APP_BASE_URL}lists/all`, {
             headers: {
                 token: "Bearer "+ JSON.parse(localStorage.getItem("user")).accessToken
             },
@@ -21,7 +21,7 @@ export const deleteList = async (id,dispatch) => {
     dispatch(deleteListStart())
     // console.log("hello")
     try {
-        await axios.delete("http://localhost:8800/api/lists/"+id, {
+        await axios.delete(`${import.meta.env.VITE_REACT_APP_BASE_URL}lists/`+id, {
             headers: {
                 token: "Bearer "+ JSON.parse(localStorage.getItem("user")).accessToken
             },
@@ -36,7 +36,7 @@ export const createList = async (list,dispatch) => {
     dispatch(createListStart())
     // console.log("hello")
     try {
-        const res = await axios.post("http://localhost:8800/api/lists", list, {
+        const res = await axios.post(`${import.meta.env.VITE_REACT_APP_BASE_URL}lists`, list, {
             headers: {
                 token: "Bearer "+ JSON.parse(localStorage.getItem("user")).accessToken
             },

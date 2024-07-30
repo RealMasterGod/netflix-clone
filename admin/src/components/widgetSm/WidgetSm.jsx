@@ -1,19 +1,21 @@
 import "./widgetSm.css";
 import { Visibility } from "@mui/icons-material";
 import axios from "axios";
-import React from "react";
+import React, { useContext } from "react";
+import { AuthContext } from "../../context/authContext/AuthContext";
 
 export default function WidgetSm() {
   const [newUsers, setNewUsers] = React.useState([]);
+  const {user} = useContext(AuthContext)
   React.useEffect(() => {
     const getNewUsers = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:8800/api/users?new=true",
+          `${import.meta.env.VITE_REACT_APP_BASE_URL}users?new=true`,
           {
             headers: {
               token:
-                `Bearer ${JSON.parse(localStorage.getItem("user")).accessToken}`,
+                `Bearer ${user.accessToken}`,
             },
           }
         );

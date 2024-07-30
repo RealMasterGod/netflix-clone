@@ -15,7 +15,7 @@ const Home = ({type}) => {
         const getRandomLists = async () => {
             // console.log(type,genre)
             try {
-                const res = await axios.get(`http://localhost:8800/api/lists${type ? "?type="+ type : ""}${genre ? "&genre="+genre : ""}`,{
+                const res = await axios.get(`${import.meta.env.VITE_REACT_APP_BASE_URL}lists${type ? "?type="+ type : ""}${genre ? "&genre="+genre : ""}`,{
                     headers: {
                         token: `Bearer ${user.accessToken}`,
                     }
